@@ -11,7 +11,7 @@ export default function Home() {
       </p>
       <div className="flex gap-4">
         <Link 
-          href="/login" 
+          href="/dashboard" 
           className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition shadow-lg"
         >
           Get Started
