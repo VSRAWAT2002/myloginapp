@@ -27,9 +27,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.css",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-, "src/app/contactus"  ],
+    "**/*.mts",
+    "src/app/contactus"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,16 +1,17 @@
 import { dbConnect } from "@/lib/dbconnect";
 import User from "@/models/User";
-import { NextResponse } from "next/server";
 import { signupSchema } from "@/lib/schemas";
-import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
+import { sendEmail } from "@/lib/sendEmail";
+
+export const maxDuration = 60; 
 
 export async function POST(req: Request) {
     try {
         await dbConnect();
-        const formData = await req.formData();
-
-        const rawData = Object.fromEntries(formData.entries());
-        const validation = signupSchema.safeParse(rawData);
+        
+        const body = await req.json();
+        const validation = signupSchema.safeParse(body);
 
         if (!validation.success) {
             return NextResponse.json(
@@ -19,38 +20,40 @@ export async function POST(req: Request) {
             );
         }
 
-        const { username, email, password } = validation.data;
-        const file = formData.get("profilePic") as File | null;
+        const { username, email } = validation.data;
+        const normalizedEmail = email.toLowerCase();
 
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({ email: normalizedEmail });
         if (existingUser) {
-            return NextResponse.json({ error: "User already exists" }, { status: 400 });
+            return NextResponse.json(
+                { error: "Email already registered" }, 
+                { status: 400 }
+            );
         }
 
-        let profilePicData = ""; 
-        if (file && file.size > 0) {
-            const bytes = await file.arrayBuffer();
-            const buffer = Buffer.from(bytes);
-            
-            const base64String = buffer.toString("base64");
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-            profilePicData = `data:${file.type};base64,${base64String}`;
+        try {
+            await sendEmail({
+                to: normalizedEmail,
+                subject: "Verify Your Account - OTP",
+                html: `
+                    <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+                        <h2 style="color: #16a34a;">Welcome!</h2>
+                        <p>Hi ${username},</p>
+                        <p>Please use the following One-Time Password (OTP) to verify your email:</p>
+                        <h1 style="background: #f4f4f4; padding: 10px; text-align: center; letter-spacing: 5px; color: #333;">${otp}</h1>
+                    </div>
+                `
+            });
+        } catch (emailError) {
+            console.error("Email Sending Error:", emailError);
+            return NextResponse.json({ error: "Failed to send verification email." }, { status: 500 });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        return NextResponse.json({ message: "OTP sent successfully", otp: otp }, { status: 200 });
 
-        await User.create({
-            username,
-            email,
-            password: hashedPassword,
-            profilePic: profilePicData, 
-        });
-
-        return NextResponse.json(
-            { message: "User registered successfully!" },
-            { status: 201 },
-        );
     } catch (error: any) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }

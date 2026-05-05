@@ -16,12 +16,12 @@ export default function Home() {
         >
           Get Started
         </Link>
-        <Link 
+        {/* <Link 
           href="/signup" 
           className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition"
         >
           Sign Up
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
