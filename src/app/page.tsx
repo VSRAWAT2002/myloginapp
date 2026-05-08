@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+ 
 import { TreeDeciduous, Users, Heart, Zap } from "lucide-react";
 
 export default function HomePage() {
-    redirect("/signup");
+    
     return (
         
         <div className="min-h-screen bg-white">
@@ -47,7 +47,7 @@ export default function HomePage() {
                         <div className="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 transform rotate-[-2deg] transition hover:rotate-0 duration-300">
                            
                             <img 
-                                src="/family-tree-hero.jpg" 
+                                src="https://www.vecteezy.com/vector-art/29092049-family-tree-chart-with-human-avatarshttps://static.vecteezy.com/system/resources/previews/029/092/049/non_2x/family-tree-chart-with-human-avatars-vector.jpg" 
                                 alt="Visual Family Tree Example" 
                                 className="w-full max-w-[500px] h-auto rounded-2xl animate-float"
                             />
