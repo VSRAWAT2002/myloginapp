@@ -1,9 +1,12 @@
 "use client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { TreeDeciduous, Users, Heart, Zap } from "lucide-react";
 
 export default function HomePage() {
+    redirect("/signup");
     return (
+        
         <div className="min-h-screen bg-white">
             <header className="relative bg-[#f8fafc] overflow-hidden border-b border-slate-100">
                 <div className="absolute inset-0 opacity-[0.03]">
@@ -96,6 +99,9 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+            
         </div>
+        
     );
+    
 }
