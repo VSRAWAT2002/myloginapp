@@ -2,13 +2,11 @@ import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/dbconnect";
 import User from "@/models/User";
 import { sendEmail } from "@/lib/sendEmail";
-import crypto from "crypto";
 
 export async function POST(req: Request) {
     try {
         await dbConnect();
         const { email } = await req.json();
-
         const user = await User.findOne({ email: email.toLowerCase() });
         if (!user) {
             return NextResponse.json({ message: "If an account exists, an OTP has been sent." }, { status: 200 });

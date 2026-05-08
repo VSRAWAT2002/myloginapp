@@ -11,8 +11,9 @@ export const sendEmail = async ({ to, subject, html }: { to: string; subject: st
   });
 
   const mailOptions = {
-    from: `"My App Support" <${process.env.EMAIL_USER}>`,
+    from: `"My Family App Support" <${process.env.EMAIL_USER}>`,
     to,
+    // text,
     subject,
     html,
   };

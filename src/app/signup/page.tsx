@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
-// Define the type directly from the schema
 type SignupFormData = z.infer<typeof signupSchema>;
 
 export default function SignupPage() {
@@ -19,7 +18,6 @@ export default function SignupPage() {
     const [pendingData, setPendingData] = useState<SignupFormData | null>(null);
     const [isVerifying, setIsVerifying] = useState(false);
 
-    // FIX: Pass the generic type to useForm
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignupFormData>({
         resolver: zodResolver(signupSchema),
         defaultValues: {
@@ -27,7 +25,7 @@ export default function SignupPage() {
             email: "",
             password: "",
             confirmPassword: "",
-            profilePic: "" // Provide a default value for the missing field
+            profilePic: "" 
         }
     });
 
@@ -68,6 +66,7 @@ export default function SignupPage() {
             });
 
             if (response.ok) {
+                router.refresh();
                 Swal.fire("Success!", "Account created.", "success").then(() => router.push("/login"));
             } else {
                 const res = await response.json();

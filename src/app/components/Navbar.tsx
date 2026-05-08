@@ -23,7 +23,7 @@ export default async function Navbar() {
         <nav className="flex justify-between items-center p-6 bg-gray-800 text-white shadow-md">
             <div className="text-xl font-bold">
                
-                <Link href={token ? "/dashboard" : "/"}>MyLogo</Link>
+                <Link href={token ? "/dashboard" : "/"}>MyFamilyTree</Link>
             </div>
 
             <div className="space-x-6 flex items-center">
@@ -31,11 +31,11 @@ export default async function Navbar() {
                     Contact Us
                 </Link>
 
-                {userRole === 'admin' && (
+                {/* {userRole === 'admin' && (
                     <Link href="/admin" className="text-yellow-400 font-bold hover:text-yellow-300">
                         Admin Panel
                     </Link>
-                )}
+                )} */}
 
                 {token ? (
                     <>
