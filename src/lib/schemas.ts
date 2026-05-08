@@ -12,8 +12,7 @@ export const signupSchema = z
             .regex(/[0-9]/, "Must contain one number")
             .regex(/[@$!%*?&]/, "Must contain one special character"),
         confirmPassword: z.string().min(1, "Please confirm your password"),
-         
-        profilePic: z.string().optional().default(""),
+    // profilePic: z.string().optional().or(z.literal("")).default(""),
     })
     .refine((data) => data.password === data.confirmPassword, {
         message: "Passwords do not match",

@@ -6,11 +6,11 @@ import { jwtVerify } from "jose";
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> } 
 ) {
-    try {
+   try {
         await dbConnect();
-        const { id } = params;
+        const { id } = await params;  
 
         const cookieStore = await cookies();
         const token = cookieStore.get("session_token")?.value;

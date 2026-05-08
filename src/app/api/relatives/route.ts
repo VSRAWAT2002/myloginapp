@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "@/lib/dbconnect"; 
+import { dbConnect } from "@/lib/dbconnect";
 import Relative from "@/models/Relative";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 

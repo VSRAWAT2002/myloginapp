@@ -12,9 +12,10 @@ export async function dbConnect() {
   try {
     await mongoose.connect(MONGODB_URI);
     console.log("Connected to MongoDB Atlas");
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Connection error:", error);
     throw error; 
   }
 }
-export default dbConnect;
+// export default dbConnect;
