@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
- 
+import Image from 'next/image'; 
 import { TreeDeciduous, Users, Heart, Zap } from "lucide-react";
 
 export default function HomePage() {
@@ -46,7 +46,7 @@ export default function HomePage() {
                         
                         <div className="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 transform rotate-[-2deg] transition hover:rotate-0 duration-300">
                            
-                            <img 
+                            <Image 
                                 src="/family-tree-hero.jpg" 
                                 alt="Visual Family Tree Example" 
                                 className="w-full max-w-[500px] h-auto rounded-2xl animate-float"
