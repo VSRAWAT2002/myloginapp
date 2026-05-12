@@ -56,14 +56,14 @@ export default function HomePage() {
                     <div className="relative flex items-center justify-center">
                         <div className="absolute -inset-10 bg-green-200/40 rounded-full blur-3xl opacity-60"></div>
 
-                        <div className="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 transform rotate-[-2deg] transition hover:rotate-0 duration-300">
+                        <div className="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 transform rotate-2deg transition hover:rotate-0 duration-300">
                             <Image
-                                src="/family-tree-hero.jpg"
+                                src="https://myloginapp-jade.vercel.app/family-tree-hero.jpg"
                                 alt="Visual Family Tree Example"
                                 width={500}
                                 height={400}
                                 sizes="(max-width: 768px) 100vw, 500px"
-                                className="w-full max-w-[500px] h-auto rounded-2xl animate-float"
+                                className="w-full max-w-500px h-auto rounded-2xl animate-float"
                                 style={{ height: "auto" }}
                                 priority
                             />
