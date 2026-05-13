@@ -3,8 +3,8 @@ import Navbar from "./components/Navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Family Tree",
-  description: "Visualize your heritage",
+  title: "My Family Tree | Trace Your Roots & Heritage",
+  description: "A secure platform to build, visualize, and manage your family lineage. Start documenting your heritage today.",
   verification: {
     google: "bTVvQdmomuqc6SClIUvVDkRGv8l5qAZpXz2t9YEkwoU",
   },
