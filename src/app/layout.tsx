@@ -1,16 +1,25 @@
-import "./globals.css";  
+import "./globals.css";
 import Navbar from "./components/Navbar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Family Tree",
+  description: "Visualize your heritage",
+  verification: {
+    google: "bTVvQdmomuqc6SClUVvDKRgv8l5qAZpXz2t9YEkwouU",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">  
+      <body className="antialiased">
         <Navbar />
-        <main>{children}</main> 
+        <main>{children}</main>
       </body>
     </html>
   );
