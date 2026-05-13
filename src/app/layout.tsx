@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "My Family Tree",
   description: "Visualize your heritage",
   verification: {
-    google: "bTVvQdmomuqc6SClUVvDKRgv8l5qAZpXz2t9YEkwouU",
+    google: "bTVvQdmomuqc6SClIUvVDkRGv8l5qAZpXz2t9YEkwoU",
   },
 };
 
